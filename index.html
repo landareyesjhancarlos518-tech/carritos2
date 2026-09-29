@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔥 ¡Feliz Día de Hot Wheels, Mi Piloto Favorito! 🏎️💨</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,700;0,800;1,700;1,800&family=Montserrat:wght@400;600;700;900&family=Russo+One&family=Racing+Sans+One&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Audio Controls Floating Bar -->
+  <div class="audio-control-bar">
+    <button id="soundToggleBtn" class="btn-sound" title="Activar/Desactivar Sonidos de Motor y Efectos">
+      <span class="sound-icon">🔊</span>
+      <span class="sound-label">Sonido V8: ON</span>
+    </button>
+    <button id="quickRevBtn" class="btn-rev" title="¡Acelerar el motor!">
+      <span class="flame-icon">🔥</span> ¡ACELERAR!
+    </button>
+  </div>
+
+  <!-- Ambient Hot Wheels Track Background -->
+  <div class="track-bg-overlay">
+    <div class="hot-track-loop"></div>
+    <div class="speed-lines"></div>
+  </div>
+
+  <!-- MAIN WRAPPER -->
+  <div class="page-container">
+
+    <!-- HERO HEADER -->
+    <header class="hero-section">
+      <div class="banner-badge">
+        <span class="badge-flag">🏁</span>
+        <span class="badge-text">30 DE SEPTIEMBRE • DÍA OFICIAL DE HOT WHEELS</span>
+        <span class="badge-flag">🏁</span>
+      </div>
+
+      <div class="logo-container">
+        <!-- Hot Wheels Custom Flame Logo Style -->
+        <div class="hw-flame-wrapper">
+          <div class="hw-logo-flames">
+            <span class="hw-word-hot">HOT</span>
+            <span class="hw-word-wheels">WHEELS</span>
+          </div>
+          <div class="hw-subtext">EDICIÓN DE COLECCIÓN: MI NOVIO FAVORITO</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        ¡FELIZ DÍA, MI PILOTO! 🏎️💨
+      </h1>
+      <p class="hero-subtitle">
+        Dicen que los chicos nunca dejan de amar los autos veloces... y yo tengo la suerte de tener al piloto más guapo, cariñoso y todo terreno de la pista. ¡Hoy te mereces toda la colección!
+      </p>
+
+      <!-- TACHOMETER / INTERACTIVE ACCELERATOR -->
+      <div class="speedo-container">
+        <div class="speedo-dial">
+          <div class="speedo-center">
+            <span id="speedDisplay" class="speed-number">0</span>
+            <span class="speed-unit">KM/H DE AMOR</span>
+            <div class="gear-indicator">GEAR: <span id="gearDisplay">P</span></div>
+          </div>
+          <div id="speedoNeedle" class="speedo-needle"></div>
+        </div>
+        
+        <div class="pedal-action-zone">
+          <button id="gasPedalBtn" class="gas-pedal">
+            <span class="pedal-top">PISE A FONDO</span>
+            <span class="pedal-metal"></span>
+            <span class="pedal-hint">¡Mantenlo presionado para quemar goma! 🔥</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: EL BLISTER MISTERIOSO (UNBOXING VIRTUAL) -->
+    <section class="section unboxing-section">
+      <div class="section-header">
+        <span class="section-tag">SORPRESA INTERACTIVA</span>
+        <h2>🎁 ¡ABRE TU BLISTER DE HOT WHEELS!</h2>
+        <p>Un verdadero coleccionista sabe que abrir el empaque es un momento sagrado. ¡Haz clic para romper el plástico protector y descubrir qué hay adentro!</p>
+      </div>
+
+      <div class="blister-package-wrapper">
+        <div class="blister-card" id="unboxingBlister">
+          <!-- Card Header Top Peg Hole -->
+          <div class="blister-peg-hole"></div>
+
+          <!-- Top Graphics -->
+          <div class="blister-header">
+            <div class="blister-logo">HOT WHEELS <span>LIMITED</span></div>
+            <div class="blister-series">SERIE: AMOR ETERNO 2026 • 01/01</div>
+          </div>
+
+          <!-- Flame Illustration & Car Preview Area -->
+          <div class="blister-card-art">
+            <div class="car-badge-pill">SUPER TREASURE HUNT 🌟</div>
+            <div class="car-illustration-zone">
+              <svg class="hw-car-svg" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="carBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ff1100"/>
+                    <stop offset="50%" stop-color="#ff6600"/>
+                    <stop offset="100%" stop-color="#ffcc00"/>
+                  </linearGradient>
+                  <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4facfe"/>
+                    <stop offset="100%" stop-color="#00f2fe"/>
+                  </linearGradient>
+                  <radialGradient id="wheelRim" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffd700"/>
+                    <stop offset="60%" stop-color="#b8860b"/>
+                    <stop offset="100%" stop-color="#111"/>
+                  </radialGradient>
+                </defs>
+                <!-- Flames on car -->
+                <path d="M70,120 Q120,70 200,95 Q150,110 240,115 Q170,135 120,130 Z" fill="#ffea00" opacity="0.8"/>
+                <path d="M120,125 Q180,85 230,105 Q190,120 260,120 Z" fill="#ffffff" opacity="0.6"/>
+                <!-- Spoiler -->
+                <rect x="30" y="70" width="40" height="8" rx="4" fill="#111"/>
+                <polygon points="45,78 50,110 58,110 52,78" fill="#333"/>
+                <!-- Car Body Base -->
+                <path d="M40,125 C40,110 60,100 110,95 L180,70 C240,55 330,60 370,85 L440,105 C470,115 480,130 470,145 L450,150 L50,150 Z" fill="url(#carBodyGrad)" stroke="#111" stroke-width="4"/>
+                <!-- Cabin / Windshield -->
+                <path d="M185,73 L235,58 C280,56 325,60 350,83 L305,85 L190,83 Z" fill="url(#glassGrad)" stroke="#111" stroke-width="3" opacity="0.9"/>
+                <!-- Side window -->
+                <path d="M200,85 L285,85 L270,110 L180,108 Z" fill="#1e293b" stroke="#111" stroke-width="2"/>
+                <!-- Headlights -->
+                <polygon points="450,115 475,122 470,135 445,130" fill="#00ffff" filter="drop-shadow(0 0 5px #00ffff)"/>
+                <!-- Chrome Side Exhaust Pipes -->
+                <rect x="180" y="140" width="80" height="12" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                <!-- Flame from exhaust -->
+                <path id="exhaustFlame" d="M175,145 Q150,140 130,146 Q150,152 175,148 Z" fill="#ff7700"/>
+                <!-- Wheel Back -->
+                <circle cx="115" cy="150" r="38" fill="#1a1a1a" stroke="#000" stroke-width="6"/>
+                <circle cx="115" cy="150" r="24" fill="url(#wheelRim)"/>
+                <circle cx="115" cy="150" r="8" fill="#fff"/>
+                <!-- Wheel Front -->
+                <circle cx="390" cy="150" r="38" fill="#1a1a1a" stroke="#000" stroke-width="6"/>
+                <circle cx="390" cy="150" r="24" fill="url(#wheelRim)"/>
+                <circle cx="390" cy="150" r="8" fill="#fff"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Plastic Blister Bubble (To be opened) -->
+          <div class="blister-bubble-layer" id="bubbleCover">
+            <div class="bubble-reflection"></div>
+            <div class="bubble-prompt">
+              <span class="click-pulse-icon">💥</span>
+              <span>¡TOCA PARA DESTAPAR!</span>
+              <small>(Empaque 100% sellado)</small>
+            </div>
+          </div>
+
+          <!-- Unboxed Surprise Inside (Hidden until opened) -->
+          <div class="blister-inside-reward" id="blisterReward">
+            <div class="reward-title">✨ ¡HAS DESBLOQUEADO TU REGALO! ✨</div>
+            <p class="reward-desc">
+              "Para el dueño de mi corazón: Eres mi copiloto ideal para todas las curvas de la vida."
+            </p>
+            <div class="gift-badge">
+              <span class="gift-icon">🏆</span>
+              <div>
+                <strong>CERTIFICADO DE AUTENTICIDAD:</strong>
+                <p>El novio más consentido, tierno y guapo del mundo entero.</p>
+              </div>
+            </div>
+            <button class="btn-claim" id="claimBonusBtn">¡Reclamar Recompensa! 🚀</button>
+          </div>
+
+          <!-- Bottom Card details -->
+          <div class="blister-footer">
+            <div class="footer-spec">
+              <span>MODELO:</span> <strong>NOVIO SOÑADO GT</strong>
+            </div>
+            <div class="footer-spec">
+              <span>CONDICIÓN:</span> <strong>PERFECTO (10/10)</strong>
+            </div>
+            <div class="barcode">||||||||||||||||||||||||||| 30092026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: GARAJE DE COLECCIÓN (CUSTOM DIE-CAST CARDS) -->
+    <section class="section garage-section">
+      <div class="section-header">
+        <span class="section-tag">CATÁLOGO EXCLUSIVO</span>
+        <h2>🏎️ GARAJE DE MODELOS ESPECIALES</h2>
+        <p>Cada aspecto tuyo tiene su propia edición de lujo. Desliza y conoce la flota completa:</p>
+      </div>
+
+      <div class="garage-grid">
+        <!-- Card 1 -->
+        <div class="car-card" data-tilt>
+          <div class="card-foil-shine"></div>
+          <div class="car-card-header">
+            <span class="card-series-num">01/04</span>
+            <span class="card-edition-tag">TH TREASURE HUNT</span>
+          </div>
+          <div class="car-card-visual car-visual-1">
+            <div class="card-car-emoji">🏎️⚡</div>
+            <div class="card-car-name">Twin Turbo Romance</div>
+          </div>
+          <div class="car-specs">
+            <div class="spec-row">
+              <span class="spec-label">Velocidad Máx:</span>
+              <span class="spec-val">Infinito km/h</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Aceleración 0-100:</span>
+              <span class="spec-val">0.1s al verte</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Combustible:</span>
+              <span class="spec-val">Besitos & Café</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Blindaje:</span>
+              <span class="spec-val">Abrazos rompehuesos</span>
+            </div>
+          </div>
+          <p class="car-bio">
+            "Diseñado para acelerar mis latidos en cada semáforo. Ningún auto de Fórmula 1 se compara a la adrenalina que me da estar contigo."
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="car-card" data-tilt>
+          <div class="card-foil-shine"></div>
+          <div class="car-card-header">
+            <span class="card-series-num">02/04</span>
+            <span class="card-edition-tag">SUPERCHARGED V8</span>
+          </div>
+          <div class="car-card-visual car-visual-2">
+            <div class="card-car-emoji">🚗🔥</div>
+            <div class="card-car-name">El Rompecorazones Rodger</div>
+          </div>
+          <div class="car-specs">
+            <div class="spec-row">
+              <span class="spec-label">Potencia:</span>
+              <span class="spec-val">1200 HP de Guapura</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tracción:</span>
+              <span class="spec-val">Total en mi mente 24/7</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Sonido del Escape:</span>
+              <span class="spec-val">Risa contagiosa</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Estilo:</span>
+              <span class="spec-val">Insuperable</span>
+            </div>
+          </div>
+          <p class="car-bio">
+            "Equipado con esa mirada que me desarma y ese sentido del humor que arregla cualquier mal día en segundos."
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="car-card" data-tilt>
+          <div class="card-foil-shine"></div>
+          <div class="car-card-header">
+            <span class="card-series-num">03/04</span>
+            <span class="card-edition-tag">TRACK STARS</span>
+          </div>
+          <div class="car-card-visual car-visual-3">
+            <div class="card-car-emoji">🚙💨</div>
+            <div class="card-car-name">Night Rider Aventurero</div>
+          </div>
+          <div class="car-specs">
+            <div class="spec-row">
+              <span class="spec-label">Misión:</span>
+              <span class="spec-val">Cantar en la ruta</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Suspensión:</span>
+              <span class="spec-val">Para cualquier viaje</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">GPS:</span>
+              <span class="spec-val">A donde sea juntos</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Copiloto:</span>
+              <span class="spec-val">Yo siempre ❤️</span>
+            </div>
+          </div>
+          <p class="car-bio">
+            "Para esas escapadas, salidas a comer rico, ver el atardecer y escuchar nuestras canciones favoritas con la ventanilla baja."
+          </p>
+        </div>
+
+        <!-- Card 4: CUSTOMIZABLE -->
+        <div class="car-card card-custom" data-tilt>
+          <div class="card-foil-shine"></div>
+          <div class="car-card-header">
+            <span class="card-series-num">04/04</span>
+            <span class="card-edition-tag">★ EDICIÓN LIMITADA PERSONALIZADA ★</span>
+          </div>
+          <div class="car-card-visual car-visual-custom" id="customCardVisual">
+            <img id="customCarPhoto" class="custom-photo-preview" src="" alt="" style="display:none;">
+            <div class="custom-car-placeholder" id="customPlaceholder">
+              <span class="camera-icon">📸</span>
+              <span id="displayCustomTitle">Tu Auto / Foto Aquí</span>
+            </div>
+          </div>
+          <div class="custom-inputs-box">
+            <label class="custom-input-label">Nombre de tu Piloto / Auto:</label>
+            <input type="text" id="inputBoyfriendName" class="custom-input" placeholder="Ej: Mi Amor / El Campeón" value="Mi Campeón Favorito">
+            
+            <label class="custom-input-label">Superpoder / Mensaje:</label>
+            <input type="text" id="inputCarPower" class="custom-input" placeholder="Ej: Siempre me hace sonreír" value="El mejor novio de toda la pista">
+
+            <label class="btn-upload-photo" for="photoUpload">
+              📷 Subir foto de él o de su auto favorito
+              <input type="file" id="photoUpload" accept="image/*" style="display:none;">
+            </label>
+          </div>
+          <button class="btn-save-card" id="btnUpdateCard">¡Actualizar Tarjeta!</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MINI JUEGO DRAG RACE -->
+    <section class="section game-section">
+      <div class="section-header">
+        <span class="section-tag">ZONA ARCADE</span>
+        <h2>🏁 PISTA DE DRAG RACE: ¡ACELERA AL MÁXIMO!</h2>
+        <p>¿Podrás cruzar el cuarto de milla y ganar la Copa Dorada? Presiona el acelerador en el momento justo cuando la luz esté en VERDE.</p>
+      </div>
+
+      <div class="race-game-box">
+        <!-- Tree Lights (Semáforo Drag Race) -->
+        <div class="drag-tree">
+          <div class="tree-light light-red" id="lightRed1"></div>
+          <div class="tree-light light-amber" id="lightYellow1"></div>
+          <div class="tree-light light-amber" id="lightYellow2"></div>
+          <div class="tree-light light-green" id="lightGreen"></div>
+        </div>
+
+        <!-- Race Track Canvas -->
+        <div class="track-canvas-container">
+          <canvas id="raceCanvas" width="800" height="220"></canvas>
+          <div class="finish-line-banner" id="finishBanner">¡GANASTE EL TROFEO! 🏆</div>
+        </div>
+
+        <!-- Controls Dashboard -->
+        <div class="race-controls">
+          <button id="startRaceBtn" class="btn-race-action btn-start-drag">
+            🚦 1. ENCENDER MOTOR & LISTO
+          </button>
+          
+          <button id="nitroBtn" class="btn-race-action btn-nitro" disabled>
+            ⚡ ¡NITRO / PISAR A FONDO! (ESPACIO)
+          </button>
+        </div>
+
+        <div class="race-stats-board">
+          <div class="race-stat">
+            <span class="stat-title">TIEMPO REACCIÓN:</span>
+            <span class="stat-value" id="reactionTimeDisplay">0.000 s</span>
+          </div>
+          <div class="race-stat">
+            <span class="stat-title">TIEMPO 1/4 MILLA:</span>
+            <span class="stat-value" id="quarterMileDisplay">-- s</span>
+          </div>
+          <div class="race-stat">
+            <span class="stat-title">VELOCIDAD FINAL:</span>
+            <span class="stat-value" id="topSpeedDisplay">0 KM/H</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PIT-PASS DE CUPONES CANJEABLES -->
+    <section class="section coupons-section">
+      <div class="section-header">
+        <span class="section-tag">VALES EXCLUSIVOS</span>
+        <h2>🎟️ PIT PASS: CUPONES OFICIALES DE AMOR</h2>
+        <p>Porque el Día de Hot Wheels no se queda solo en palabras. ¡Haz clic sobre cada cupón para canjearlo en la vida real!</p>
+      </div>
+
+      <div class="coupons-grid">
+        <!-- Cupón 1 -->
+        <div class="coupon-ticket" id="coupon1">
+          <div class="ticket-cutout-left"></div>
+          <div class="ticket-cutout-right"></div>
+          <div class="ticket-header">
+            <span class="ticket-tag">HOT WHEELS STORE PASS</span>
+            <span class="ticket-id">#HW-01</span>
+          </div>
+          <div class="ticket-body">
+            <div class="ticket-icon">🏎️</div>
+            <h3>1 Carrito Hot Wheels Real</h3>
+            <p>Válido para ir juntos a la tienda a buscar tu carrito favorito para tu colección, ¡yo invito!</p>
+          </div>
+          <div class="ticket-footer">
+            <button class="btn-redeem" onclick="redeemCoupon('coupon1', '¡Vale canjeado! Vamos por tu Hot Wheels 🏎️🛒')">Canjear Cupón</button>
+          </div>
+        </div>
+
+        <!-- Cupón 2 -->
+        <div class="coupon-ticket" id="coupon2">
+          <div class="ticket-cutout-left"></div>
+          <div class="ticket-cutout-right"></div>
+          <div class="ticket-header">
+            <span class="ticket-tag">PIT STOP GOURMET</span>
+            <span class="ticket-id">#HW-02</span>
+          </div>
+          <div class="ticket-body">
+            <div class="ticket-icon">🍔</div>
+            <h3>Cena / Almuerzo Favorito</h3>
+            <p>Válido por tus hamburguesas, pizza o comida chatarra preferida sin límites para recargar combustible.</p>
+          </div>
+          <div class="ticket-footer">
+            <button class="btn-redeem" onclick="redeemCoupon('coupon2', '¡Vale canjeado! A recargar combustible con comida rica 🍔🍟')">Canjear Cupón</button>
+          </div>
+        </div>
+
+        <!-- Cupón 3 -->
+        <div class="coupon-ticket" id="coupon3">
+          <div class="ticket-cutout-left"></div>
+          <div class="ticket-cutout-right"></div>
+          <div class="ticket-header">
+            <span class="ticket-tag">SPA & RELAX RACING</span>
+            <span class="ticket-id">#HW-03</span>
+          </div>
+          <div class="ticket-body">
+            <div class="ticket-icon">💆‍♂️</div>
+            <h3>Masaje & Mimada Total</h3>
+            <p>Válido por 30 minutos de masajitos en la espalda, caricias en el cabello y consentimiento absoluto.</p>
+          </div>
+          <div class="ticket-footer">
+            <button class="btn-redeem" onclick="redeemCoupon('coupon3', '¡Vale canjeado! Prepárate para el mejor masaje y mimos 💆‍♂️✨')">Canjear Cupón</button>
+          </div>
+        </div>
+
+        <!-- Cupón 4 -->
+        <div class="coupon-ticket" id="coupon4">
+          <div class="ticket-cutout-left"></div>
+          <div class="ticket-cutout-right"></div>
+          <div class="ticket-header">
+            <span class="ticket-tag">NO-DISPUTE PASS</span>
+            <span class="ticket-id">#HW-04</span>
+          </div>
+          <div class="ticket-body">
+            <div class="ticket-icon">👑</div>
+            <h3>Tienes la Razón en Todo</h3>
+            <p>Válido por 24 horas completas donde tú eliges qué ver, qué hacer y tienes la razón absoluta sin reclamos.</p>
+          </div>
+          <div class="ticket-footer">
+            <button class="btn-redeem" onclick="redeemCoupon('coupon4', '¡Vale canjeado! Hoy mandas tú, campeón 🏆🙌')">Canjear Cupón</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CARTA DE AMOR FIERRERA -->
+    <section class="section letter-section">
+      <div class="letter-box">
+        <div class="letter-stamp">
+          <div class="stamp-circle">
+            <span>SEPT 30</span>
+            <strong>2026</strong>
+            <span>HOT WHEELS</span>
+          </div>
+        </div>
+
+        <span class="letter-label">DESDE EL PIT LANE • CON TODO MI AMOR</span>
+        <h2>Para el chico que acelera mi mundo ❤️</h2>
+
+        <div class="letter-content">
+          <p>
+            ¡Feliz 30 de septiembre, mi amor! Sé lo mucho que te gustan los autos y lo especial que es este día para regalarle un Hot Wheels a la persona que más quieres en el mundo.
+          </p>
+          <p>
+            Quería hacerte algo único, divertido y pensado especialmente para ti. Porque contigo la vida no tiene frenos aburridos: cada salida, cada viaje en el auto escuchando música, cada risa compartida y cada momento juntos es una aventura a máxima velocidad.
+          </p>
+          <p>
+            Gracias por ser mi piloto favorito, por hacerme sentir tan querida y segura siempre, y por tener ese corazón tan noble y apasionado. Espero que nunca pierdas esa chispa de niño que se emociona con sus carritos y sus sueños.
+          </p>
+          <p class="letter-highlight">
+            ¡Prometo ser siempre tu copiloto más fiel en todas las curvas que nos depare la vida!
+          </p>
+        </div>
+
+        <div class="letter-signature">
+          <div class="sig-title">Con todo mi amor,</div>
+          <div class="sig-name" id="displayAuthorName">Tu Copiloto Favorita ❤️</div>
+          <div class="edit-sig-box">
+            <button class="btn-small-edit" id="btnEditLetter">✍️ Personalizar Nombres de la Carta</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="page-footer">
+      <div class="footer-flames">🔥🔥🔥</div>
+      <p class="footer-main">30 de Septiembre de 2026 • Hot Wheels Day Special Edition</p>
+      <p class="footer-credit">Hecho con amor, nitro y mucho cariño para el mejor novio del mundo.</p>
+      <button class="btn-print-page" onclick="window.print()">🖨️ Imprimir / Guardar en PDF de Recuerdo</button>
+    </footer>
+
+  </div>
+
+  <!-- MODAL: PERSONALIZAR CARTA -->
+  <div class="custom-modal" id="letterModal">
+    <div class="modal-card">
+      <h3>✍️ Personalizar Carta y Dedicatoria</h3>
+      <p>Modifica los nombres para que la carta quede 100% personalizada con sus apodos o nombres reales:</p>
+      <div class="modal-form">
+        <label>Nombre o apodo de él:</label>
+        <input type="text" id="modalPartnerName" class="custom-input" placeholder="Ej: Mi Flaco, Mi Gordito, Carlos...">
+
+        <label>Tu nombre o cómo te dice:</label>
+        <input type="text" id="modalMyName" class="custom-input" placeholder="Ej: Tu Niña, Tu Flaca, Sofi...">
+
+        <div class="modal-buttons">
+          <button class="btn-save-modal" id="btnSaveLetterModal">Guardar y Actualizar</button>
+          <button class="btn-close-modal" id="btnCloseLetterModal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>

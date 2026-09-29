@@ -1,0 +1,1420 @@
+/* =========================================================
+   HOT WHEELS DAY SPECIAL EDITION - 30/09/26
+   STYLING & VISUAL EFFECTS
+   ========================================================= */
+
+:root {
+  --hw-orange: #ff5500;
+  --hw-red: #ff1100;
+  --hw-yellow: #ffb700;
+  --hw-gold: #ffd700;
+  --hw-blue: #0088ff;
+  --hw-cyan: #00f2fe;
+  --hw-dark: #0b0d13;
+  --hw-card-bg: #141721;
+  --hw-card-border: #242938;
+  --hw-text: #f8fafc;
+  --hw-text-muted: #94a3b8;
+  --font-race: 'Russo One', 'Racing Sans One', sans-serif;
+  --font-tech: 'Chakra Petch', sans-serif;
+  --font-main: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--hw-dark);
+  color: var(--hw-text);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Background Racing Grid & Track */
+.track-bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background: 
+    radial-gradient(circle at 50% 20%, rgba(255, 85, 0, 0.25), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+.page-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 20px 80px 20px;
+}
+
+/* Floating Audio Bar */
+.audio-control-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 18, 26, 0.85);
+  border: 2px solid var(--hw-orange);
+  padding: 8px 14px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(255, 85, 0, 0.35);
+}
+
+.btn-sound, .btn-rev {
+  background: #1e2433;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-family: var(--font-tech);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-rev {
+  background: linear-gradient(135deg, var(--hw-orange), var(--hw-red));
+  border: none;
+  box-shadow: 0 0 15px rgba(255, 30, 0, 0.5);
+  animation: pulse-rev 2s infinite ease-in-out;
+}
+
+.btn-rev:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 25px rgba(255, 30, 0, 0.8);
+}
+
+@keyframes pulse-rev {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.hero-section {
+  text-align: center;
+  padding: 50px 10px 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #000;
+  border: 2px solid var(--hw-yellow);
+  padding: 8px 24px;
+  border-radius: 40px;
+  font-family: var(--font-tech);
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  color: var(--hw-yellow);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(255, 183, 0, 0.3);
+}
+
+/* HOT WHEELS LOGO EMBLEM */
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.hw-flame-wrapper {
+  background: linear-gradient(180deg, #ff1a00 0%, #ff5500 50%, #ffb700 100%);
+  padding: 18px 45px;
+  border-radius: 120px 40px 120px 40px;
+  display: inline-block;
+  transform: skew(-8deg) rotate(-2deg);
+  box-shadow: 
+    0 10px 40px rgba(255, 85, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.7),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+  border: 4px solid #ffffff;
+  position: relative;
+}
+
+.hw-logo-flames {
+  font-family: var(--font-race);
+  font-size: 3.8rem;
+  letter-spacing: -2px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  text-shadow: 
+    3px 3px 0 #000,
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    0 8px 15px rgba(0, 0, 0, 0.8);
+}
+
+.hw-word-hot {
+  color: #fff;
+  margin-right: 8px;
+}
+
+.hw-word-wheels {
+  color: var(--hw-yellow);
+}
+
+.hw-subtext {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-top: 6px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.hero-title {
+  font-family: var(--font-race);
+  font-size: 2.8rem;
+  margin-top: 25px;
+  background: linear-gradient(to right, #ffffff, #ffe1a0, #ff8c42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  max-width: 720px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--hw-text-muted);
+  margin: 15px auto 35px auto;
+}
+
+/* SPEEDOMETER & GAS PEDAL */
+.speedo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  background: linear-gradient(180deg, #161b26 0%, #0c0f17 100%);
+  border: 2px solid #2a334a;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  max-width: 480px;
+  width: 100%;
+}
+
+.speedo-dial {
+  width: 220px;
+  height: 110px;
+  position: relative;
+  border-top-left-radius: 120px;
+  border-top-right-radius: 120px;
+  background: conic-gradient(from 180deg at 50% 100%, #00f2fe 0deg, #ffd700 90deg, #ff1100 180deg);
+  padding: 8px 8px 0 8px;
+  box-shadow: 0 0 30px rgba(255, 85, 0, 0.2);
+}
+
+.speedo-center {
+  width: 100%;
+  height: 100%;
+  background: #0f121a;
+  border-top-left-radius: 112px;
+  border-top-right-radius: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+}
+
+.speed-number {
+  font-family: var(--font-race);
+  font-size: 3.2rem;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 15px var(--hw-orange);
+}
+
+.speed-unit {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--hw-text-muted);
+  letter-spacing: 1px;
+}
+
+.gear-indicator {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--hw-yellow);
+  margin-top: 4px;
+}
+
+.speedo-needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 90px;
+  background: #fff;
+  transform-origin: bottom center;
+  transform: rotate(-90deg);
+  border-radius: 4px;
+  box-shadow: 0 0 8px #ff1100;
+  transition: transform 0.08s ease-out;
+}
+
+.gas-pedal {
+  background: linear-gradient(180deg, #2b3245 0%, #151a25 100%);
+  border: 3px solid #ff5500;
+  border-radius: 16px;
+  padding: 16px 36px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 25px rgba(255, 85, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+  user-select: none;
+}
+
+.gas-pedal:active, .gas-pedal.pedal-down {
+  transform: translateY(6px) scale(0.97);
+  box-shadow: 0 2px 10px rgba(255, 85, 0, 0.6), inset 0 6px 12px rgba(0, 0, 0, 0.6);
+  border-color: #ff1100;
+  background: #11141d;
+}
+
+.pedal-top {
+  font-family: var(--font-race);
+  font-size: 1.25rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.pedal-metal {
+  width: 90px;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, #64748b, #64748b 6px, #1e293b 6px, #1e293b 12px);
+  border-radius: 4px;
+}
+
+.pedal-hint {
+  font-size: 0.8rem;
+  color: var(--hw-yellow);
+  font-weight: 600;
+}
+
+/* =========================================================
+   GENERIC SECTION HEADERS
+   ========================================================= */
+.section {
+  margin-top: 80px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-tag {
+  display: inline-block;
+  background: rgba(255, 85, 0, 0.15);
+  color: var(--hw-orange);
+  border: 1px solid var(--hw-orange);
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 30px;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-family: var(--font-race);
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.section-header p {
+  color: var(--hw-text-muted);
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   SECTION 1: UNBOXING BLISTER
+   ========================================================= */
+.blister-package-wrapper {
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.blister-card {
+  width: 100%;
+  max-width: 440px;
+  background: linear-gradient(135deg, #0d121f 0%, #171d2c 40%, #0d111b 100%);
+  border-radius: 20px;
+  border: 3px solid #ff5500;
+  padding: 24px 20px 20px 20px;
+  position: relative;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(255, 85, 0, 0.25);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blister-peg-hole {
+  width: 50px;
+  height: 16px;
+  background: #000;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  margin: 0 auto 18px auto;
+  position: relative;
+}
+
+.blister-peg-hole::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 8px;
+  background: #0b0d13;
+  border-radius: 6px;
+}
+
+.blister-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #28334a;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.blister-logo {
+  font-family: var(--font-race);
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.blister-logo span {
+  color: var(--hw-yellow);
+}
+
+.blister-series {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--hw-cyan);
+  background: rgba(0, 242, 254, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.blister-card-art {
+  background: radial-gradient(circle at 50% 50%, #2a1b14 0%, #11141c 80%);
+  border-radius: 16px;
+  padding: 20px 10px;
+  position: relative;
+  border: 1px solid #3d2417;
+  overflow: hidden;
+}
+
+.car-badge-pill {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: linear-gradient(90deg, #ffd700, #ff8c00);
+  color: #000;
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.car-illustration-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.hw-car-svg {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.8));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 3D Bubble Layer that covers the car */
+.blister-bubble-layer {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  right: 20px;
+  bottom: 85px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 242, 254, 0.1) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blister-bubble-layer:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 85, 0, 0.15) 100%);
+  border-color: rgba(255, 183, 0, 0.8);
+}
+
+.bubble-prompt {
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid var(--hw-yellow);
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  font-family: var(--font-tech);
+  font-weight: 800;
+  box-shadow: 0 0 20px rgba(255, 183, 0, 0.5);
+  animation: bounce-slow 1.8s infinite;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.bubble-prompt small {
+  font-size: 0.72rem;
+  color: var(--hw-text-muted);
+  font-weight: 500;
+}
+
+/* Opened State for Bubble */
+.blister-card.unboxed .blister-bubble-layer {
+  opacity: 0;
+  transform: scale(1.15) rotate(8deg);
+  pointer-events: none;
+}
+
+.blister-card.unboxed .hw-car-svg {
+  transform: translateY(-8px) scale(1.08);
+  filter: drop-shadow(0 20px 25px rgba(255, 85, 0, 0.7));
+}
+
+/* Inside reward revealed */
+.blister-inside-reward {
+  display: none;
+  background: linear-gradient(135deg, #1b2130, #131722);
+  border: 2px solid var(--hw-gold);
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25);
+  animation: fadeIn 0.6s ease;
+}
+
+.blister-card.unboxed .blister-inside-reward {
+  display: block;
+}
+
+.reward-title {
+  font-family: var(--font-race);
+  color: var(--hw-gold);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.reward-desc {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.gift-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+.gift-badge .gift-icon {
+  font-size: 1.8rem;
+}
+
+.gift-badge strong {
+  color: var(--hw-yellow);
+  display: block;
+  font-size: 0.75rem;
+}
+
+.btn-claim {
+  background: linear-gradient(90deg, #ff5500, #ff1100);
+  border: none;
+  color: #fff;
+  font-family: var(--font-tech);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 85, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.btn-claim:hover {
+  transform: scale(1.05);
+}
+
+.blister-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px dashed #334155;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+}
+
+.footer-spec span {
+  color: var(--hw-text-muted);
+}
+
+.barcode {
+  letter-spacing: 2px;
+  color: #64748b;
+  font-size: 0.7rem;
+}
+
+/* =========================================================
+   SECTION 2: GARAJE DE COLECCIÓN (CARDS)
+   ========================================================= */
+.garage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.car-card {
+  background: var(--hw-card-bg);
+  border: 2px solid var(--hw-card-border);
+  border-radius: 20px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--hw-orange);
+  box-shadow: 0 15px 40px rgba(255, 85, 0, 0.25);
+}
+
+.card-car-emoji {
+  font-size: 3.5rem;
+  text-align: center;
+  margin: 10px 0;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+}
+
+.card-series-num {
+  font-family: var(--font-race);
+  font-size: 1.1rem;
+  color: var(--hw-gold);
+}
+
+.card-edition-tag {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: #ff5500;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.car-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-car-name {
+  font-family: var(--font-race);
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.car-specs {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  color: var(--hw-text-muted);
+}
+
+.spec-val {
+  color: var(--hw-yellow);
+  font-weight: 700;
+}
+
+.car-bio {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #cbd5e1;
+  font-style: italic;
+  margin-top: auto;
+}
+
+/* CUSTOM CARD (04) */
+.card-custom {
+  border-color: #ffd700;
+  background: linear-gradient(180deg, #1d1b26 0%, #141721 100%);
+}
+
+.custom-car-placeholder {
+  height: 120px;
+  border: 2px dashed #4b5563;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--hw-text-muted);
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.custom-car-placeholder .camera-icon {
+  font-size: 2rem;
+}
+
+.custom-photo-preview {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 2px solid var(--hw-gold);
+}
+
+.custom-inputs-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.custom-input-label {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  color: var(--hw-text-muted);
+  font-weight: 600;
+}
+
+.custom-input {
+  background: #0b0d13;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.custom-input:focus {
+  border-color: var(--hw-orange);
+}
+
+.btn-upload-photo {
+  background: #232c3f;
+  border: 1px solid #3e4c6d;
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: var(--font-tech);
+  font-weight: 700;
+  cursor: pointer;
+  display: block;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+
+.btn-upload-photo:hover {
+  background: #2d3850;
+  border-color: var(--hw-yellow);
+}
+
+.btn-save-card {
+  background: linear-gradient(90deg, #ffd700, #ff8c00);
+  border: none;
+  color: #000;
+  font-family: var(--font-tech);
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   SECTION 3: DRAG RACE MINI-GAME
+   ========================================================= */
+.race-game-box {
+  background: linear-gradient(180deg, #10141f 0%, #090b10 100%);
+  border: 3px solid #ff5500;
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Christmas Tree Drag Lights */
+.drag-tree {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  background: #050608;
+  padding: 12px 24px;
+  border-radius: 40px;
+  align-self: center;
+  border: 2px solid #242938;
+}
+
+.tree-light {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #222;
+  border: 2px solid #111;
+  transition: background 0.1s, box-shadow 0.1s;
+}
+
+.light-red.active {
+  background: #ff0044;
+  box-shadow: 0 0 15px #ff0044;
+}
+
+.light-amber.active {
+  background: #ffb700;
+  box-shadow: 0 0 15px #ffb700;
+}
+
+.light-green.active {
+  background: #00ff66;
+  box-shadow: 0 0 20px #00ff66;
+}
+
+.track-canvas-container {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #242938;
+  background: #111;
+}
+
+#raceCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.finish-line-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: linear-gradient(90deg, #ff1100, #ff8c00);
+  color: #fff;
+  font-family: var(--font-race);
+  font-size: 1.8rem;
+  padding: 16px 32px;
+  border-radius: 40px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 40px rgba(255, 85, 0, 0.9);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 20;
+  text-align: center;
+}
+
+.finish-line-banner.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.race-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-race-action {
+  font-family: var(--font-race);
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-start-drag {
+  background: #242c3d;
+  color: #fff;
+  border: 2px solid #4a5568;
+}
+
+.btn-start-drag:hover {
+  background: #2f3a52;
+  border-color: #fff;
+}
+
+.btn-nitro {
+  background: linear-gradient(90deg, #0088ff, #00f2fe);
+  color: #000;
+  font-weight: 900;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+}
+
+.btn-nitro:not(:disabled):hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.8);
+}
+
+.btn-nitro:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.race-stats-board {
+  display: flex;
+  justify-content: space-around;
+  background: #080a0f;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid #1e2433;
+}
+
+.race-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-title {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  color: var(--hw-text-muted);
+}
+
+.stat-value {
+  font-family: var(--font-race);
+  font-size: 1.3rem;
+  color: var(--hw-yellow);
+}
+
+/* =========================================================
+   SECTION 4: PIT PASS COUPONS
+   ========================================================= */
+.coupons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.coupon-ticket {
+  background: linear-gradient(135deg, #1b212f 0%, #121622 100%);
+  border: 2px dashed #475569;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.coupon-ticket:hover {
+  transform: translateY(-5px);
+  border-color: var(--hw-yellow);
+}
+
+.ticket-cutout-left, .ticket-cutout-right {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--hw-dark);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  border: 2px dashed #475569;
+}
+
+.ticket-cutout-left { left: -12px; }
+.ticket-cutout-right { right: -12px; }
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ticket-tag {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--hw-orange);
+}
+
+.ticket-id {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.ticket-body {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.ticket-icon {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+.ticket-body h3 {
+  font-family: var(--font-race);
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.ticket-body p {
+  font-size: 0.85rem;
+  color: var(--hw-text-muted);
+  line-height: 1.4;
+}
+
+.btn-redeem {
+  width: 100%;
+  background: #ff5500;
+  border: none;
+  color: #fff;
+  font-family: var(--font-tech);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-redeem:hover {
+  background: #ff2200;
+}
+
+.coupon-ticket.redeemed {
+  border-color: #22c55e;
+  background: linear-gradient(135deg, #0f231a 0%, #0d1a15 100%);
+}
+
+.coupon-ticket.redeemed .btn-redeem {
+  background: #22c55e;
+  cursor: default;
+}
+
+/* =========================================================
+   SECTION 5: CARTA DE AMOR
+   ========================================================= */
+.letter-section {
+  display: flex;
+  justify-content: center;
+}
+
+.letter-box {
+  background: linear-gradient(180deg, #1b202e 0%, #10141d 100%);
+  border: 3px solid #ff5500;
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 780px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.letter-stamp {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+}
+
+.stamp-circle {
+  width: 75px;
+  height: 75px;
+  border: 2px dashed var(--hw-yellow);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  color: var(--hw-yellow);
+  transform: rotate(12deg);
+}
+
+.stamp-circle strong {
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.letter-label {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--hw-cyan);
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.letter-box h2 {
+  font-family: var(--font-race);
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 25px;
+  max-width: 80%;
+}
+
+.letter-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.letter-highlight {
+  font-weight: 700;
+  color: var(--hw-yellow);
+  font-size: 1.15rem;
+  border-left: 4px solid var(--hw-orange);
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.letter-signature {
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #2d3748;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.sig-title {
+  font-size: 0.9rem;
+  color: var(--hw-text-muted);
+}
+
+.sig-name {
+  font-family: var(--font-race);
+  font-size: 1.4rem;
+  color: var(--hw-orange);
+}
+
+.btn-small-edit {
+  background: #232c3f;
+  border: 1px solid #3e4c6d;
+  color: #cbd5e1;
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-small-edit:hover {
+  background: #334155;
+  color: #fff;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.page-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid #242938;
+}
+
+.footer-flames {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-main {
+  font-family: var(--font-race);
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.footer-credit {
+  color: var(--hw-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.btn-print-page {
+  background: #1e2433;
+  color: #fff;
+  border: 1px solid #475569;
+  font-family: var(--font-tech);
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-print-page:hover {
+  background: #334155;
+  border-color: var(--hw-orange);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.custom-modal.active {
+  display: flex;
+}
+
+.modal-card {
+  background: #141824;
+  border: 2px solid var(--hw-orange);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+.modal-card h3 {
+  font-family: var(--font-race);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.modal-card p {
+  font-size: 0.9rem;
+  color: var(--hw-text-muted);
+  margin-bottom: 20px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-form label {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--hw-yellow);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-save-modal {
+  flex: 1;
+  background: var(--hw-orange);
+  border: none;
+  color: #fff;
+  font-family: var(--font-tech);
+  font-weight: 800;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-close-modal {
+  background: #242c3d;
+  border: none;
+  color: #94a3b8;
+  font-family: var(--font-tech);
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .hw-logo-flames {
+    font-size: 2.6rem;
+  }
+  .hero-title {
+    font-size: 1.9rem;
+  }
+  .speedo-container {
+    padding: 20px 15px;
+  }
+  .letter-box {
+    padding: 25px 20px;
+  }
+  .letter-stamp {
+    position: static;
+    margin-bottom: 20px;
+  }
+}
+
+/* Print Friendly Styles */
+@media print {
+  .audio-control-bar, .pedal-action-zone, .race-game-box, .btn-small-edit, .btn-print-page, .btn-sound, .btn-rev {
+    display: none !important;
+  }
+  body, html {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .page-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .car-card, .letter-box, .coupon-ticket, .blister-card {
+    border-color: #333 !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}
